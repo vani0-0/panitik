@@ -27,8 +27,11 @@
   color: var(--color-10);
 }
 
-.glassy button {
+.login-button {
+  background-color: var(--color-30);
+  border: 2px solid var(--color-10);
+  padding: 1rem 2rem;
+  font-size: 1rem;
   margin-top: 1rem;
-  background-color: var(--color-10);
-  color: var(--color-60);
+  color: var(--color-10);
 }
