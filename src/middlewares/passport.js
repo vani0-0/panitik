@@ -1,12 +1,16 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 function initializePassport(passport, port, findBySub) {
+  const callbackURL =
+    process.env.NODE_ENV === "production"
+      ? process.env.REDIRECT_URI_PROD
+      : process.env.REDIRECT_URI_DEV;
   passport.use(
     new GoogleStrategy(
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `http://localhost:${port}/auth/google/callback`,
+        callbackURL,
       },
       async function (accessToken, refreshToken, profile, cb) {
         const user = await findBySub(profile._json);
