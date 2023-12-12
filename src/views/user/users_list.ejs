@@ -1,6 +1,4 @@
-<%- include('./partials/navbar') %>
 <div class="content-body">
-
   <h2>users list</h2>
   <a href="/user/new">Add User</a>
   <table>
@@ -18,7 +16,7 @@
           <td><%= user.role %></td>
           <td>
             <a href="/edit-user/<%= user._id %>" class="edit-button">Edit</a> |
-            <a href="#" class="delete-button" data-user-id="<%= user._id %>">Delete</a>
+            <a href="#" class="delete-button" id="delete-button" data-user-id="<%= user._id %>">Delete</a>
           </td>
         </tr>
         <% }); %>

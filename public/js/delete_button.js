@@ -1,6 +1,6 @@
 console.log("delete.js");
 
-const deleteButtons = document.querySelectorAll(".delete-button");
+const deleteButtons = document.querySelectorAll("#delete-button");
 
 deleteButtons.forEach((button) => {
   button.addEventListener("click", function (event) {

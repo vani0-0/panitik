@@ -9,13 +9,24 @@
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/login.css" />
     <link rel="stylesheet" href="/css/table.css" />
+    <link rel="stylesheet" href="/css/form.css" />
   </head>
 
   <body>
-    <div class="body"><%- body %></div>
+    <div class="body">
+      <% if (typeof account !== 'undefined') { %>
+        <%- include('../partials/navbar') %>
+      <% } %>
+      <% if (typeof errorMessage !== 'undefined') { %>
+      <%- include('../partials/errorMessage') %>
+      <% } %>
+
+      <%- body %>
+    </div>
     <div class="footer">
       <p>allright eme eme</p>
     </div>
     <script src="/js/delete_button.js" defer></script>
+    <script src="/js/email_input.js" defer></script>
   </body>
 </html>

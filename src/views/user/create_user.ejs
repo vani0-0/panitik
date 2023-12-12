@@ -1,0 +1,26 @@
+<div class="content-body">
+  <div class="center">
+    <div class="card-container">
+      <h1 style="margin-bottom: 2rem">Create a User</h1>
+      <form
+        class="create-form"
+        id="userForm"
+        action="/api/user/create"
+        method="POST"
+      >
+        <%- include('./_form_fields') %>
+        <div class="card-footer">
+          <a href="/user" class="delete-button">Cancel</a>
+          <button
+            type="submit"
+            class="submit-button"
+            id="submitButton"
+            disabled
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

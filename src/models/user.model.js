@@ -2,7 +2,7 @@ const { Schema, model, SchemaTypes } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    email: { type: SchemaTypes.String, required: true },
+    email: { type: SchemaTypes.String, required: true, unique: true },
     name: { type: SchemaTypes.String, required: true },
     role: { type: SchemaTypes.String, enum: ["ADMIN", "TEACHER", "STUDENT"] },
   },

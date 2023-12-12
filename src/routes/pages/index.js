@@ -1,6 +1,7 @@
 const userController = require("../../controllers/user.controller");
 const allowRole = require("../../middlewares/allowRole");
 const isAuthenticated = require("../../middlewares/isAuthenticated");
+const { User } = require("../../models/user.model");
 
 const pageRouter = require("express").Router();
 
@@ -9,7 +10,7 @@ pageRouter.get("/login", (req, res) => {
 });
 
 pageRouter.get("/", isAuthenticated, (req, res) => {
-  res.render("index", req.user);
+  res.render("index", { account: req.user });
 });
 
 pageRouter.get(
@@ -18,7 +19,7 @@ pageRouter.get(
   allowRole(["ADMIN"]),
   async (req, res) => {
     const users = await userController.getAllUsers();
-    res.render("users_list", { ...req.user, users });
+    res.render("user/users_list", { account: req.user, users });
   }
 );
 
@@ -27,7 +28,7 @@ pageRouter.get(
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
-    res.render("create_user", req.user);
+    res.render("user/create_user", { account: req.user, user: new User() });
   }
 );
 
@@ -42,13 +43,13 @@ pageRouter
   .delete((req, res) => {
     res.send(`User ID delete is ${req.params.id}`);
   });
-  
+
 pageRouter.get(
   "/student",
   isAuthenticated,
   allowRole(["ADMIN"]),
   (req, res) => {
-    res.render("index", req.user);
+    res.render("index", { account: req.user });
   }
 );
 
@@ -57,7 +58,7 @@ pageRouter.get(
   isAuthenticated,
   allowRole(["ADMIN"]),
   (req, res) => {
-    res.render("index", req.user);
+    res.render("index", { account: req.user });
   }
 );
 
