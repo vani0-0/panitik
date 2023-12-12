@@ -1,0 +1,70 @@
+/* .bg-image {
+  background-image: url('/assets/logo-min.png');
+  width: 100vw;
+  height: 100vh;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500;1,700&display=swap");
+
+:root {
+  --color-60: #73a580;
+  --color-30: #e0e0e0;
+  --color-10: #202020;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+button {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.25rem 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.body,
+.content-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content-body {
+  padding: 1rem 4rem;
+}
+.footer {
+  background-color: var(--color-10);
+  color: var(--color-60);
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.edit-button,
+.delete-button {
+  padding: .25rem 2rem;
+  color: var(--color-60);
+  background-color: var(--color-30);
+  border-radius: 2rem;
+}

@@ -1,0 +1,26 @@
+<%- include('./partials/navbar') %>
+<div class="content-body">
+
+  <h2>users list</h2>
+  <a href="/user/new">Add User</a>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Action</td>
+      </tr>
+      
+      <% users.forEach(user => { %> 
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+          <td>
+            <a href="/edit-user/<%= user._id %>" class="edit-button">Edit</a> |
+            <a href="#" class="delete-button" data-user-id="<%= user._id %>">Delete</a>
+          </td>
+        </tr>
+        <% }); %>
+      </table>
+</div>

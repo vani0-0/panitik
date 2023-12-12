@@ -1,0 +1,92 @@
+nav {
+  min-height: 3rem;
+  background-color: var(--color-60);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.navbar-banner {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+li {
+  list-style-type: none;
+  position: relative;
+  padding: 0.625rem 0 0.5rem;
+}
+
+li a {
+  color: var(--color-30);
+}
+
+li ul {
+  flex-direction: column;
+  position: absolute;
+  background-color: var(--color-30);
+  align-items: flex-start;
+  transition: all 0.5 ease;
+  width: 10rem;
+  right: 0rem;
+  top: 4.5rem;
+  border-radius: 0.325rem;
+  gap: 0;
+  padding: 1rem 0;
+  opacity: 0;
+  box-shadow: 10px 10px 10px rgba(20, 18, 18, 0.25, green, blue, alpha);
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+}
+
+.profile {
+  height: 3rem;
+  width: auto;
+  cursor: pointer;
+  border-radius: 100%;
+}
+
+.sub-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.725rem;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+}
+
+.sub-item:hover {
+  background-color: rgba(232, 232, 232, 0.4);
+}
+
+.sub-item:hover a {
+  color: #000;
+  cursor: pointer;
+}
+
+.name {
+  padding: 0 1rem;
+  font-size: .7rem;
+}
+
+.sub-item a {
+  font-size: 0.85rem;
+  color: var(--color-10);
+  font-weight: 500;
+  margin: 0.4rem 0;
+  flex: 1;
+  text-decoration: none;
+}

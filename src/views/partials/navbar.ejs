@@ -1,0 +1,25 @@
+<nav>
+  <div class="navbar-banner">
+    <img src="/assets/logo-min.png" alt="school-logo" width="40" height="40" />
+    <h3>PANITIK | Learning Management System</h3>
+  </div>
+  <div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/user">User</a></li>
+      <li><a href="/student">Student</a></li>
+      <li><a href="/announcement">Announcement</a></li>
+      <li>
+        <img src="<%=picture%>" class="profile" />
+        <ul>
+          <span class="name">Logged in as: <%= family_name %></span>
+          <li class="sub-item">
+            <span>
+              <a href="/api/logout" style="color: red"> Logout </a>
+            </span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

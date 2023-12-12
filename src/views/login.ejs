@@ -1,0 +1,13 @@
+<div class="login-container">
+  <div class="glassy">
+    <h2>Login Now!</h2>
+    <p>Enter our school's student portal</p>
+    <form action="/auth/google" method="GET">
+      <button class="login-button" type="submit">LOGIN WITH GOOGLE</button>
+    </form>
+    <% if (messages.error) {%>
+    <span class="error-message"> <%= messages.error %> </span>
+    <span style="font-size: 12px;">please contact your school administration for help.</span>
+    <% } %>
+  </div>
+</div>

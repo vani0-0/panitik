@@ -1,0 +1,7 @@
+<%- include('./partials/navbar') %> 
+<% if (messages.error) {%>
+  <span class="error-message"> <%= messages.error %> </span>
+  <span style="font-size: 12px">
+    please contact your school administration for help.
+  </span>
+<% } %> Welcome back! <%= name %>
