@@ -14,7 +14,7 @@ emailInput.addEventListener("input", function () {
 });
 
 function enableSubmitButton() {
-  submitButton.disabled = true;
+  submitButton.disabled = false;
 }
 
 async function checkEmail() {
@@ -34,4 +34,4 @@ async function checkEmail() {
   }
 }
 
-submitButton.disabled = false;
+submitButton.disabled = true;
