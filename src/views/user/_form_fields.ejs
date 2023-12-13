@@ -11,15 +11,27 @@
     id="emailInput"
     value="<%= user.email %>"
     required
+    <% if (editMode) { %> 
+      readonly 
+    <% } %>
   />
 </div>
 <span id="emailStatus"></span>
 
-<div class="form-group">
-  <label for="role">Select Role</label>
-  <select name="role" required>
-    <option value="ADMIN">Admin</option>
-    <option value="TEACHER">Teacher</option>
-    <option value="STUDENT">Student</option>
-  </select>
-</div>
+<% if (editMode) { %>
+  <div class="form-group">
+    <label for="role">Select Role</label>
+    <select name="role" required>
+      <option value="ADMIN" <%= user.role === 'ADMIN' ? 'selected' : '' %>>Admin</option>
+      <option value="TEACHER" <%= user.role === 'TEACHER' ? 'selected' : '' %>>Teacher</option>
+    </select>
+  </div>
+<% } else { %>
+  <div class="form-group">
+    <label for="role">Select Role</label>
+    <select name="role" required>
+      <option value="ADMIN">Admin</option>
+      <option value="TEACHER">Teacher</option>
+    </select>
+  </div>
+<% } %>

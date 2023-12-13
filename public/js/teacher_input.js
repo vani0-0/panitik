@@ -4,7 +4,7 @@ const doneTypingInterval = 500;
 const emailInput = document.getElementById("emailInput");
 const emailStatus = document.getElementById("emailStatus");
 const submitButton = document.getElementById("submitButton");
-const userForm = document.getElementById("userForm");
+const userForm = document.getElementById("sectionForm");
 
 emailInput.addEventListener("input", function () {
   clearTimeout(typingTimer);
@@ -14,17 +14,17 @@ emailInput.addEventListener("input", function () {
 });
 
 function enableSubmitButton() {
-  submitButton.disabled = true;
+  submitButton.disabled = false;
 }
 
 async function checkEmail() {
   const email = emailInput.value;
 
-  const response = await fetch(`/api/user/check-email?email=${email}`);
+  const response = await fetch(`/api/user/check-email?email=${email}&role=TEACHER`);
   const data = await response.json();
-
-  if (data.exists) {
-    emailStatus.innerText = "Email already exists";
+  console.log(data)
+  if (!data.exists) {
+    emailStatus.innerText = "Email doesnt exist";
     emailStatus.style.color = "red";
     submitButton.disabled = true;
   } else {
@@ -34,4 +34,4 @@ async function checkEmail() {
   }
 }
 
-submitButton.disabled = false;
+submitButton.disabled = true;

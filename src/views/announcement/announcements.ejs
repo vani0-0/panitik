@@ -1,0 +1,18 @@
+<div class="content-body" style="padding: 1rem 30rem">
+  <form action="/announcements/create">
+    <div class="container post-creation">
+      <img
+        src="<%= account.picture %>"
+        width="60"
+        height="60"
+        class="profile"
+      />
+      <input type="submit" class="button" value="Create Announcement" />
+    </div>
+  </form>
+  <% announcements.forEach(announcement => { %> 
+    <%- include('../partials/announcementCard', { announcement }) %> 
+  <%}); %>
+</div>
+
+<script src="/js/delete_announcement.js"></script>

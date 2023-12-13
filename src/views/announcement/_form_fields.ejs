@@ -1,0 +1,30 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input
+    name="title"
+    type="text"
+    value="<%= announcement.title %>"
+    required
+  />
+</div>
+
+<div class="form-group">
+  <label for="content">Content: </label>
+  <textarea name="content" required >
+    <%= announcement.content %>
+  </textarea>
+</div>
+
+<input
+  type="file"
+  label="Image"
+  name="myFile"
+  id="file-upload"
+  accept=".jpeg, .png, .jpg"
+  onchange="handleFileUpload(event)"
+  style="display: none"
+/>
+
+<label for="file-upload" class="custom-file-upload">
+  <img src="<%= announcement.picture %>" alt="" id="previewImage" />
+</label>

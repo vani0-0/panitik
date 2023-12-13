@@ -1,16 +1,16 @@
 <div class="content-body">
   <div class="center">
     <div class="card-container">
-      <h1 style="margin-bottom: 2rem">Create a User</h1>
+      <h1 style="margin-bottom: 2rem">Create Section</h1>
       <form
         class="create-form"
-        id="userForm"
-        action="/api/user/create"
+        id="sectionForm"
+        action="/api/section/create"
         method="POST"
       >
         <%- include('./_form_fields') %>
         <div class="card-footer">
-          <a href="/user" class="delete-button">Cancel</a>
+          <a href="/section" class="delete-button">Cancel</a>
           <button
             type="submit"
             class="submit-button"
@@ -25,4 +25,4 @@
   </div>
 </div>
 
-<script src="/js/email_input.js" defer></script>
+<script src="/js/teacher_input.js" defer></script>

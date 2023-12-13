@@ -1,0 +1,26 @@
+<div class="container post">
+  <div class="post-header">
+    <div style="display: flex">
+      <img src="<%= announcement.author.picture %>" alt="" class="profile" />
+      <div>
+        <h3><%= announcement.author.name %></h3>
+        <span class="sub"><%= announcement.createdAt %></span>
+      </div>
+    </div>
+    <div>
+      <a href="/announcements/edit/<%= announcement._id %>" class="edit-button">
+        <span>edit</span>
+      </a>
+      <a href="/announcements/delete/<%= announcement._id %>" class="delete-button">
+        <span>delete</span>
+      </a>
+    </div>
+  </div>
+  <div>
+    <h3><%= announcement.title %></h3>
+    <p>
+      <%- announcement.content.replace(/\n/g, '<br />') %>
+    </p>
+    <img src="<%= announcement.picture %>" />
+  </div>
+</div>

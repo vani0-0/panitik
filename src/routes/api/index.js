@@ -1,5 +1,6 @@
-const userController = require("../../controllers/user.controller");
-const { User } = require("../../models/user.model");
+const announcementRoute = require("./announcement");
+const sectionRoute = require("./section");
+const userRoute = require("./user");
 
 const apiRoute = require("express").Router();
 
@@ -13,27 +14,7 @@ apiRoute.get("/logout", function (req, res) {
   });
 });
 
-apiRoute.get("/user/check-email", async function (req, res) {
-  const email = req.query.email;
-  console.log(email);
-
-  const exists = await userController.getUser(email);
-  res.json({ exists });
-});
-
-apiRoute.post("/user/create", async function (req, res) {
-  const isExist = await userController.getUser(req.body.email);
-
-  if (isExist) {
-    return res.redirect("/user");
-  }
-
-  const user = await userController.createUser({
-    name: req.body.name,
-    email: req.body.email,
-    role: req.body.role,
-  });
-  res.redirect("users");
-});
-
+apiRoute.use("/user", userRoute);
+apiRoute.use("/section", sectionRoute);
+apiRoute.use('/announcement', announcementRoute)
 module.exports = apiRoute;

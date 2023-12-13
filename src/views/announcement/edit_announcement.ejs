@@ -1,0 +1,24 @@
+<div class="content-body">
+  <div class="container">
+    <form
+      action="/api/announcement/edit/<%= announcement._id %>"
+      method="POST"
+      style="
+        flex: 1;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      "
+    >
+      <%- include('./_form_fields') %>
+
+      <div class="card-footer">
+        <a href="/announcements" class="delete-button">Cancel </a>
+        <input type="submit" value="Upload" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/js/image_upload.js"></script>

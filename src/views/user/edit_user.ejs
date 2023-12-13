@@ -1,11 +1,11 @@
 <div class="content-body">
   <div class="center">
     <div class="card-container">
-      <h1 style="margin-bottom: 2rem">Create a User</h1>
+      <h1 style="margin-bottom: 2rem">Edit User</h1>
       <form
         class="create-form"
         id="userForm"
-        action="/api/user/create"
+        action='/api/user/edit/<%= user._id %>'
         method="POST"
       >
         <%- include('./_form_fields') %>
@@ -15,14 +15,11 @@
             type="submit"
             class="submit-button"
             id="submitButton"
-            disabled
           >
-            Add
+            Edit
           </button>
         </div>
       </form>
     </div>
   </div>
 </div>
-
-<script src="/js/email_input.js" defer></script>

@@ -22,8 +22,18 @@
   gap: 5px;
 }
 
-.form-group input {
+input,
+textarea {
   width: 100%;
+  border: none;
+  background-color: aliceblue;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+}
+
+textarea {
+  height: 10rem;
+  resize: none;
 }
 
 .card-footer {
@@ -35,4 +45,11 @@
 .card-container a,
 .card-container button {
   flex: 1;
+}
+
+.custom-file-upload {
+  cursor: pointer;
+  border: 2px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
 }

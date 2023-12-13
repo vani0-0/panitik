@@ -1,0 +1,13 @@
+.post {
+  flex-direction: column;
+}
+.post-header {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.sub {
+  font-size: small;
+}

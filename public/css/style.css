@@ -53,8 +53,9 @@ a {
 }
 
 .content-body {
-  padding: 1rem 4rem;
+  padding: 1rem 10rem;
   align-items: stretch;
+  gap: .25rem;
 }
 .footer {
   background-color: var(--color-10);
@@ -74,6 +75,7 @@ a {
   background-color: var(--color-30);
   border-radius: 2rem;
   font-size: 12px;
+  border: 1px solid black;
 }
 
 .delete-button {
@@ -81,6 +83,7 @@ a {
   color: white;
 }
 
+.edit-button,
 .submit-button {
   background-color: var(--color-60);
   color: white;
@@ -95,4 +98,21 @@ a {
   align-items: center;
   justify-content: center;
   flex: 1;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-60);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.post-creation {
+  gap: 10px;
+}
+
+.button {
+  cursor: pointer;
+  text-align: left;
 }

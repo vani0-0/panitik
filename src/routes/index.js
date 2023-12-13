@@ -20,6 +20,7 @@ router.get(
 );
 
 router.use(pageRoute);
+
 router.use("/api", apiRoute);
 
 module.exports = router;

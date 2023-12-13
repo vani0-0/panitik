@@ -54,7 +54,7 @@ ul li ul:hover {
 
 .profile {
   height: 3rem;
-  width: auto;
+  width: 3rem;
   cursor: pointer;
   border-radius: 100%;
 }

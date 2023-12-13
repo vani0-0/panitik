@@ -1,11 +1,11 @@
 require("dotenv").config();
-const expressLayouts = require('express-ejs-layouts')
+const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
 const flash = require("express-flash");
 const passport = require("passport");
 const express = require("express");
 const path = require("path");
-
+const morgan = require("morgan");
 
 const initializePassport = require("./src/middlewares/passport");
 const connectDB = require("./src/database");
@@ -17,8 +17,10 @@ async function main() {
   const PORT = process.env.PORT;
 
   initializePassport(passport, PORT, async (profile) => {
-    console.log(profile.sub);
-    const user = User.findOne({ email: profile.email });
+    const user = User.findOneAndUpdate(
+      { email: profile.email },
+      { picture: profile.picture }
+    );
     return user;
   });
 
@@ -26,7 +28,7 @@ async function main() {
   app.set("view engine", "ejs");
   app.set("views", __dirname + "/src/views");
   app.set("layout", "layouts/layout");
-  app.use(expressLayouts)
+  app.use(expressLayouts);
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   app.use(
@@ -39,7 +41,7 @@ async function main() {
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(flash());
-
+  app.use(morgan('dev'));
   app.use(router);
 
   app.listen(PORT, async () => {
