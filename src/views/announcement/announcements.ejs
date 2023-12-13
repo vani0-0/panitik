@@ -1,4 +1,4 @@
-<div class="content-body" style="padding: 1rem 30rem">
+<div class="content-body">
   <form action="/announcements/create">
     <div class="container post-creation">
       <img
@@ -11,7 +11,7 @@
     </div>
   </form>
   <% announcements.forEach(announcement => { %> 
-    <%- include('../partials/announcementCard', { announcement }) %> 
+    <%- include('../partials/announcementCard', { announcement , account}) %> 
   <%}); %>
 </div>
 
