@@ -6,7 +6,7 @@ const Announcement = require("../../models/announcement.model");
 const announcementRouter = require("express").Router();
 
 announcementRouter.get(
-  "/announcements",
+  "/",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
@@ -19,7 +19,7 @@ announcementRouter.get(
 );
 
 announcementRouter.get(
-  "/announcements/create",
+  "/create",
   isAuthenticated,
   allowRole(["ADMIN"]),
   (req, res) => {
@@ -31,7 +31,7 @@ announcementRouter.get(
 );
 
 announcementRouter.get(
-  "/announcements/edit/:id",
+  "/edit/:id",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
@@ -52,7 +52,7 @@ announcementRouter.get(
 );
 
 announcementRouter.get(
-  "/announcements/delete/:id",
+  "/delete/:id",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {

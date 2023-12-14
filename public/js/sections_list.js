@@ -30,7 +30,7 @@ async function init() {
       event.preventDefault();
       const sectionId = this.getAttribute("data-section-id");
       if (confirm("Are you sure you want to delete this section?")) {
-        window.location.href = `/user/delete/${sectionId}`;
+        window.location.href = `/section/delete/${sectionId}`;
       }
     });
   });

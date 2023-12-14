@@ -1,0 +1,28 @@
+<div class="content-body">
+  <div class="center">
+    <div class="card-container">
+      <h1 style="margin-bottom: 2rem">Edit Section</h1>
+      <form
+        class="create-form"
+        id="sectionForm"
+        action="/api/section/edit/<%= section._id %>"
+        method="POST"
+      >
+        <%- include('./_form_fields') %>
+        <div class="card-footer">
+          <a href="/section" class="delete-button">Cancel</a>
+          <button
+            type="submit" 
+            class="submit-button"
+            id="submitButton"
+            disabled
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/teacher_input.js" defer></script>

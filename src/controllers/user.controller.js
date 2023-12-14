@@ -17,7 +17,6 @@ module.exports = {
   getUser: async (email, role) => {
     if (role) {
       const user = await User.findOne({ email, role });
-      console.log(user)
       return user;
     }
     const user = await User.findOne({ email });

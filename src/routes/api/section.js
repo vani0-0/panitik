@@ -10,7 +10,6 @@ sectionRoute.get(
   allowRole(["ADMIN"]),
   async (req, res) => {
     const sections = await sectionController.getAllSections();
-    
     res.status(200).send(sections);
   }
 );
@@ -28,7 +27,23 @@ sectionRoute.post(
       max: req.body.max,
     });
 
-    res.redirect('/section')
+    res.redirect("/section");
+  }
+);
+
+sectionRoute.post(
+  "/edit/:id",
+  isAuthenticated,
+  allowRole(["ADMIN"]),
+  async (req, res) => {
+    const user = await userController.getUser(req.body.advisor);
+    await sectionController.editSection(req.params.id, {
+      name: req.body.name,
+      gradeLevel: req.body.gradeLevel,
+      advisor: user._id,
+      max: req.body.max,
+    });
+    res.redirect("/section");
   }
 );
 

@@ -6,17 +6,16 @@ const { User } = require("../../models/user.model");
 const userRouter = require("express").Router();
 
 userRouter.get(
-  "/user",
+  "/",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
-    const users = await userController.getAllUsers();
-    res.render("user/users_list", { account: req.user, users });
+    res.render("user/users_list", { account: req.user });
   }
 );
 
 userRouter.get(
-  "/user/new",
+  "/new",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
@@ -29,16 +28,14 @@ userRouter.get(
 );
 
 userRouter.get(
-  "/user/:id",
+  "/:id",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
     const user = await userController.findById(req.params.id);
     if (!user) {
-      const users = await userController.getAllUsers();
       res.render("user/users_list", {
         account: req.user,
-        users,
         errorMessage: "ID does not exist",
       });
     }
@@ -47,13 +44,15 @@ userRouter.get(
 );
 
 userRouter.get(
-  "/user/delete/:id",
+  "/delete/:id",
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
     await userController.deleteById(req.params.id);
-    const users = await userController.getAllUsers();
-    res.render("user/users_list", { account: req.user, users, errorMessage: 'User deleted'});
+    res.render("user/users_list", {
+      account: req.user,
+      errorMessage: "User deleted",
+    });
   }
 );
 

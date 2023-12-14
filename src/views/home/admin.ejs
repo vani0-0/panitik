@@ -1,0 +1,27 @@
+<div class="content-body">
+  <p>Welcome back! <%= account.name %></p>
+
+    <form action="/announcements/create">
+      <div class="container post-creation">
+        <img
+          src="<%= account.picture %>"
+          width="60"
+          height="60"
+          class="profile"
+        />
+        <input type="submit" class="button" value="Create Announcement" />
+      </div>
+    </form>
+    <div style="display: flex; justify-content: space-between; gap: .25rem; align-items: start;">
+      <div class="container">
+        Some stats
+      </div>
+      <div style="flex: 1; gap: .25rem; display: flex; flex-direction: column;">
+        <% announcements.forEach(announcement => { %> 
+          <%- include('../partials/announcementCard', { announcement , account}) %> 
+        <%}); %>
+      </div>
+    </div>
+  </div>
+
+<script src="/js/delete_announcement.js"></script>
