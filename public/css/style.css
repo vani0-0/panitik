@@ -73,6 +73,15 @@ a {
 .footer {
   background-color: var(--color-10);
   color: var(--color-60);
+  padding: .25rem;
+}
+
+.footer a {
+  color: var(--color-30);
+}
+
+.footer a:hover {
+  color: var(--color-60);
 }
 
 .error-message {
