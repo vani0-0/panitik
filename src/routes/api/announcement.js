@@ -12,7 +12,7 @@ announcementRoute.post(
       title: req.body.title,
       content: req.body.content,
       picture: req.body.myFile,
-      author: { ...req.user },
+      author: req.user.id,
     });
     res.send(req.body);
   }

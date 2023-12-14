@@ -5,11 +5,7 @@ const announcementSchema = new Schema(
     title: { type: SchemaTypes.String, required: true },
     content: { type: SchemaTypes.String, required: true },
     picture: { type: SchemaTypes.String },
-    author: {
-      name: { type: SchemaTypes.String },
-      picture: { type: SchemaTypes.String },
-      email: { type: SchemaTypes.String, required: true },
-    },
+    author: { type: SchemaTypes.ObjectId, ref: "user" },
   },
   { timestamps: true }
 );

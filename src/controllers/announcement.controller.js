@@ -13,11 +13,15 @@ module.exports = {
   },
 
   getAllAnnouncements: async () => {
-    const announcements = await Announcement.find().sort({ createdAt: "desc" });
+    const announcements = await Announcement.find()
+      .populate("author")
+      .sort({ createdAt: "desc" });
     const formattedAnnouncements = announcements.map((announcement) => ({
       ...announcement._doc,
+      author: announcement.author,
       createdAt: formatCreatedAt(announcement.createdAt),
     }));
+    console.log(formattedAnnouncements);
     return formattedAnnouncements;
   },
 

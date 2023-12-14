@@ -17,7 +17,7 @@ function initializePassport(passport, port, findBySub) {
         if (!user) {
           return cb(null, false, { message: "Google account not signed up." });
         }
-        return cb(null, { ...profile._json, role: user.role });
+        return cb(null, { ...profile._json, role: user.role, id: user._id });
       }
     )
   );
