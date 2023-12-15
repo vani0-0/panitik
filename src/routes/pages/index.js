@@ -4,6 +4,7 @@ const isAuthenticated = require("../../middlewares/isAuthenticated");
 const announcementRouter = require("./announcements.page");
 const sectionRouter = require("./section.page");
 const studentRouter = require("./student.page");
+const subjectRouter = require("./subjects.page");
 const userRouter = require("./user.page");
 
 const pageRouter = require("express").Router();
@@ -12,6 +13,7 @@ pageRouter.use('/user', userRouter);
 pageRouter.use('/section', sectionRouter);
 pageRouter.use('/announcements', announcementRouter);
 pageRouter.use('/student', studentRouter)
+pageRouter.use('/subject', subjectRouter)
 
 pageRouter.get("/login", (req, res) => {
   res.render("login");

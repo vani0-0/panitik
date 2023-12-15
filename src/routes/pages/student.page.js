@@ -1,5 +1,4 @@
-const sectionController = require("../../controllers/section.controller");
-const studentController = require("../../controllers/student.controller");
+const sectionController = require("../../controllers/section.controller"); 
 const userController = require("../../controllers/user.controller");
 const allowRole = require("../../middlewares/allowRole");
 const isAuthenticated = require("../../middlewares/isAuthenticated");

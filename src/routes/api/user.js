@@ -15,7 +15,8 @@ userRoute.get(
   isAuthenticated,
   allowRole(["ADMIN"]),
   async function (req, res) {
-    const users = await userController.getAllUsers();
+    const role = req.query.role;
+    const users = await userController.getAllUsers(role);
     res.status(200).send(users);
   }
 );

@@ -1,6 +1,7 @@
 const announcementRoute = require("./announcement");
 const sectionRoute = require("./section");
 const studentRoute = require("./student");
+const subjectRoute = require("./subject");
 const userRoute = require("./user");
 
 const apiRoute = require("express").Router();
@@ -19,5 +20,5 @@ apiRoute.use("/user", userRoute);
 apiRoute.use("/section", sectionRoute);
 apiRoute.use("/announcement", announcementRoute);
 apiRoute.use("/student", studentRoute);
-
+apiRoute.use("/subject", subjectRoute);
 module.exports = apiRoute;

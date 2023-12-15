@@ -6,6 +6,7 @@ const sectionSchema = new Schema({
   advisor: { type: SchemaTypes.ObjectId, ref: "user", required: true },
   students: [{ type: SchemaTypes.ObjectId, ref: "student" }],
   max: { type: SchemaTypes.Number, default: 50 },
+  subjects: [{type: SchemaTypes.ObjectId, ref: "subject"}]
 });
 
 const Section = model("section", sectionSchema);

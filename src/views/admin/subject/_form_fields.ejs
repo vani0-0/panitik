@@ -1,0 +1,35 @@
+<div class="form-group">
+  <label for="name">Subject Name</label>
+  <input
+    id="name"
+    type="text"
+    name="name"
+    value="<%= subject.name %>"
+    required
+    autocomplete="additional-name"
+  />
+</div>
+
+<div class="form-group">
+  <label for="teacher" id="teacher">Assigned Teacher</label>
+  <select id="teacher-select" name="teacher" required></select>
+</div>
+
+<div class="form-group">
+  <label for="grade">Grade Level</label>
+  <select id="grade" name="grade" required>
+    <option value="7">Grade 7</option>
+    <option value="8">Grade 8</option>
+    <option value="9">Grade 9</option>
+    <option value="10">Grade 10</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="section" id="section">Section</label>
+  <select id="section-select" name="section" required></select>
+</div>
+
+
+<script src="/js/get_sections.js"></script>
+<script src="/js/get_teacher.js"></script>

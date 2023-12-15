@@ -15,9 +15,15 @@ module.exports = {
       return null;
     }
   },
-  
-  getAllUsers: async () => {
-    const users = await User.find({ role: {$ne: 'STUDENT'} }).exec();
+
+  getAllUsers: async (role) => {
+    let query = {};
+    if (role) {
+      query.role = role;
+    } else {
+      query.role = { $ne: 'STUDENT' };
+    }
+    const users = await User.find(query).exec();
     return users;
   },
   
