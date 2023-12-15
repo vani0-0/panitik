@@ -14,6 +14,16 @@ sectionRoute.get(
   }
 );
 
+sectionRoute.get(
+  "/",
+  isAuthenticated,
+  allowRole(["ADMIN"]),
+  async (req, res) => {
+    const sections = await sectionController.getByGrades(req.query.grade)
+    res.status(200).send(sections)
+  }
+);
+
 sectionRoute.post(
   "/create",
   isAuthenticated,

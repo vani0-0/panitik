@@ -9,6 +9,11 @@ module.exports = {
     return segs;
   },
 
+  getByGrades: async (gradeLevel) => {
+    const sections = await Section.find({ gradeLevel })
+    return sections;
+  },  
+
   findById: async (id) => {
     try {
       const section = await Section.findById(id).populate("advisor");

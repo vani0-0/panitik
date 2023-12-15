@@ -8,12 +8,18 @@ const pageSize = 10;
 let curPage = 1;
 
 async function init() {
-  table = document.querySelector("#sectionTable tbody");
-  let response = await fetch("/api/section/all");
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  let section = urlSearchParams.get("sectionName");
+  if (section === null) {
+    section = "all";
+  }
+  table = document.querySelector("#studentTable tbody");
+  const response = await fetch(`/api/student/all?section=${section}`);
+
   data = await response.json();
   renderTable();
 
-  document.querySelectorAll("#sectionTable thead tr th").forEach((t) => {
+  document.querySelectorAll("#userTable thead tr th").forEach((t) => {
     t.addEventListener("click", sort, false);
   });
   document
@@ -28,9 +34,9 @@ async function init() {
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
       event.preventDefault();
-      const sectionId = this.getAttribute("data-section-id");
-      if (confirm("Are you sure you want to delete this section?")) {
-        window.location.href = `/section/delete/${sectionId}`;
+      const userId = this.getAttribute("data-user-id");
+      if (confirm("Are you sure you want to delete this user?")) {
+        window.location.href = `/user/delete/${userId}`;
       }
     });
   });
@@ -44,16 +50,18 @@ function renderTable() {
       let end = curPage * pageSize;
       if (index >= start && index < end) return true;
     })
-    .forEach((section) => {
+    .forEach((student) => {
       result += `
     <tr>
-      <td> ${section.gradeLevel}</td>
-      <td> ${section.name}</td>
-      <td> ${section.advisorName}</td>
+      <td> ${student.gradeLevel}</td> 
+      <td> ${student.studentNo}</td>
+      <td> ${student.name}</td> 
+      <td> ${student.email}</td>
+      <td> ${student.gender}</td>
+      <td> ${student.status} </td>
       <td>
-        <a href="/student?sectionName=${section.name}" class="edit-button">View Students</a> |
-        <a href="/section/${section._id}" class="edit-button">Edit</a> |
-        <a href="#" class="delete-button" id="delete-button" data-section-id="${section._id}">Delete</a>
+        <a href="/student/${student._id}" class="edit-button">View</a> |
+        <a href="#" class="delete-button" id="delete-button" data-student-id="${student._id}">Delete</a>
       </td>
     </tr>
     `;

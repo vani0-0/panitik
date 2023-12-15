@@ -34,4 +34,4 @@ async function checkEmail() {
   }
 }
 
-submitButton.disabled = true;
+submitButton.disabled = false;

@@ -10,7 +10,7 @@ userRouter.get(
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
-    res.render("user/users_list", { account: req.user });
+    res.render("admin/user/users_list", { account: req.user });
   }
 );
 
@@ -19,7 +19,7 @@ userRouter.get(
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
-    res.render("user/create_user", {
+    res.render("admin/user/create_user", {
       account: req.user,
       user: new User(),
       editMode: false,
@@ -34,12 +34,12 @@ userRouter.get(
   async (req, res) => {
     const user = await userController.findById(req.params.id);
     if (!user) {
-      res.render("user/users_list", {
+      res.render("admin/user/users_list", {
         account: req.user,
         errorMessage: "ID does not exist",
       });
     }
-    res.render("user/edit_user", { account: req.user, user, editMode: true });
+    res.render("admin/user/edit_user", { account: req.user, user, editMode: true });
   }
 );
 
@@ -49,7 +49,7 @@ userRouter.get(
   allowRole(["ADMIN"]),
   async (req, res) => {
     await userController.deleteById(req.params.id);
-    res.render("user/users_list", {
+    res.render("admin/user/users_list", {
       account: req.user,
       errorMessage: "User deleted",
     });

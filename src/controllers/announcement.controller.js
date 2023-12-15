@@ -21,7 +21,6 @@ module.exports = {
       author: announcement.author,
       createdAt: formatCreatedAt(announcement.createdAt),
     }));
-    console.log(formattedAnnouncements);
     return formattedAnnouncements;
   },
 

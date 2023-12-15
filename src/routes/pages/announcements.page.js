@@ -11,7 +11,7 @@ announcementRouter.get(
   allowRole(["ADMIN"]),
   async (req, res) => {
     const announcements = await announcementController.getAllAnnouncements();
-    res.render("announcement/announcements", {
+    res.render("admin/announcement/announcements", {
       account: req.user,
       announcements,
     });
@@ -23,7 +23,7 @@ announcementRouter.get(
   isAuthenticated,
   allowRole(["ADMIN"]),
   (req, res) => {
-    res.render("announcement/create_announcement", {
+    res.render("admin/announcement/create_announcement", {
       account: req.user,
       announcement: new Announcement(),
     });
@@ -38,13 +38,13 @@ announcementRouter.get(
     const announcement = await announcementController.findById(req.params.id);
     if (!announcement) {
       const announcements = await announcementController.getAllAnnouncements();
-      res.render("announcement/announcements", {
+      res.render("admin/announcement/announcements", {
         account: req.user,
         announcements,
         errorMessage: "ID does not exist",
       });
     }
-    res.render("announcement/edit_announcement", {
+    res.render("admin/announcement/edit_announcement", {
       account: req.user,
       announcement,
     });
@@ -58,7 +58,7 @@ announcementRouter.get(
   async (req, res) => {
     await announcementController.deleteById(req.params.id);
     const announcements = await announcementController.getAllAnnouncements();
-    res.render("announcement/announcements", {
+    res.render("admin/announcement/announcements", {
       account: req.user,
       announcements,
     });

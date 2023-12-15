@@ -1,0 +1,28 @@
+<div class="content-body">
+  <h2>STUDENTS LIST</h2>
+  <div style="margin-bottom: 10px;">
+    <a href="/student/new" class="submit-button">Enroll</a>
+  </div>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th data-sort="gradeLevel">Grade</th>
+        <th data-sort="studentNo">Student No.</th>
+        <th data-sort="name">Name</th>
+        <th data-sort="email">Email</th>
+        <th data-sort="gender">Gender</th>
+        <th data-sort="status">Status</th>
+        <th>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="4"><i>Loading...</i></td></tr>
+    </tbody>
+  </table>
+  <div style="display: flex; justify-content: end;">
+    <button id="prevButton">Previous</button> 
+    <button id="nextButton">Next</button> 
+  </div>
+</div>  
+
+<script src="/js/student_list.js"></script>

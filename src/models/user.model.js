@@ -11,7 +11,11 @@ const userSchema = new Schema(
 );
 
 const studentSchema = new Schema({
-  section: { type: SchemaTypes.String },
+  studentNo: { type: SchemaTypes.String, unique: true, required: true },
+  section: { type: SchemaTypes.ObjectId, req: "section" },
+  gradeLevel: { type: SchemaTypes.Number },
+  gender: { type: SchemaTypes.String, enum: ["MALE", "FEMALE"] },
+  status: {type: SchemaTypes.String, enum: ["ENROLLED", "NOT ENROLLED", "DROPPED"]}
 });
 
 const User = model("user", userSchema);
