@@ -3,7 +3,6 @@ let postImage = { myFile: "" };
 async function handleFileUpload(event) {
   const file = event.target.files[0];
   const maxSizeInKB = 500;
-  console.log(file.size);
   if (file.size > maxSizeInKB * 1024) {
     alert("File size exceeds the limit (500KB). Please choose a smaller file.");
     return;
@@ -25,7 +24,6 @@ function resizeAndConvertToBase64(file, maxSizeInKB) {
       let height = image.height;
       const aspectRatio = width / height;
 
-      // Calculate new dimensions while maintaining aspect ratio
       const maxSizeInPixels = Math.sqrt((maxSizeInKB * 1024) / (4 / 3)); // Assuming image is in 4:3 aspect ratio
       if (width > maxSizeInPixels) {
         width = maxSizeInPixels;
@@ -37,7 +35,6 @@ function resizeAndConvertToBase64(file, maxSizeInKB) {
 
       context.drawImage(image, 0, 0, width, height);
 
-      // Convert the canvas to base64
       const resizedBase64 = canvas.toDataURL("image/jpeg", 0.8); // Adjust the format and quality as needed
 
       resolve(resizedBase64);

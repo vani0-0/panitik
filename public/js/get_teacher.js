@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  async function fetchSections(grade) {
-    const response = await fetch(`/api/section?grade=${grade}`);
+  async function fetchSections() {
+    const response = await fetch('/api/user/all?role=TEACHER');
     const data = await response.json();
-    console.log(data);
-    const sectionDropdown = document.getElementById("section-select");
+    const sectionDropdown = document.getElementById("teacher-select");
 
     sectionDropdown.innerHTML = "";
 
