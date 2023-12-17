@@ -30,6 +30,24 @@ studentRoute.post(
       section: req.body.section,
       studentNo,
     });
+    res.redirect("/student");
+  }
+);
+
+studentRoute.post(
+  "/edit/:id",
+  isAuthenticated,
+  allowRole(["ADMIN"]),
+  async (req, res) => {
+    console.log(req.body);
+    await studentController.editStudent(req.params.id, {
+      name: req.body.name,
+      email: req.body.email,
+      gradeLevel: req.body.grade,
+      gender: req.body.gender,
+      section: req.body.section,
+      status: req.body.status,
+    });
     res.redirect('/student')
   }
 );

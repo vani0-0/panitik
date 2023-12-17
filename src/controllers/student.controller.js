@@ -42,4 +42,7 @@ module.exports = {
     });
   },
 
+  editStudent: async (id, data) => {
+    await Student.findByIdAndUpdate(id, data);
+  },
 };

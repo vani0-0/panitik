@@ -1,6 +1,13 @@
 <div class="form-group">
   <label for="name">Name</label>
-  <input id="name" type="text" name="name" value="<%= user.name %>" required autocomplete="additional-name"/>
+  <input 
+    id="name" 
+    type="text" 
+    name="name" 
+    value="<%= user.name %>" 
+    required 
+    autocomplete="additional-name"
+  />
 </div>
 
 <div class="form-group">
@@ -19,20 +26,15 @@
 </div>
 <span id="emailStatus"></span>
 
-<% if (editMode) { %>
-  <div class="form-group">
-    <label for="role">Select Role</label>
-    <select id="role" name="role" required>
+<div class="form-group">
+  <label for="role">Select Role</label>
+  <select id="role" name="role" required>
+    <% if (editMode) { %>
       <option value="ADMIN" <%= user.role === 'ADMIN' ? 'selected' : '' %>>Admin</option>
       <option value="TEACHER" <%= user.role === 'TEACHER' ? 'selected' : '' %>>Teacher</option>
-    </select>
-  </div>
-<% } else { %>
-  <div class="form-group">
-    <label for="role">Select Role</label>
-    <select id="role" name="role" required>
+    <% } else { %>
       <option value="ADMIN">Admin</option>
       <option value="TEACHER">Teacher</option>
-    </select>
-  </div>
-<% } %>
+    <% } %>
+  </select>
+</div>

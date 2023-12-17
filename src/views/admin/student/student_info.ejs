@@ -5,7 +5,7 @@
       <form
         class="create-form"
         id="studentForm"
-        action="/api/student/create"
+        action="/api/student/edit/<%= student._id %>"
         method="POST"
       >
         <%- include('./_form_fields') %>

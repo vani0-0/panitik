@@ -1,28 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
-  async function fetchSections() {
-    const response = await fetch('/api/user/all?role=TEACHER');
+document.addEventListener("DOMContentLoaded", async function () {
+  const teacherDropdown = document.getElementById("teacher-select");
+
+  async function fetchTeachers(teacherId) {
+    const response = await fetch("/api/user/all?role=TEACHER");
     const data = await response.json();
-    const sectionDropdown = document.getElementById("teacher-select");
 
-    sectionDropdown.innerHTML = "";
+    teacherDropdown.innerHTML = "";
 
-    const option = document.createElement('option')
-    option.disabled = true;
-    option.text = "select section";
-    sectionDropdown.appendChild(option)
-
-    data.forEach((section) => {
-      const option = document.createElement("option");
-      option.value = section._id;
-      option.text = section.name;
-      sectionDropdown.appendChild(option);
+    let optionsHtml = `<option disabled value="" selected>Select teacher</option>`;
+    data.forEach((teacher) => {
+      optionsHtml += `<option value="${teacher._id}"} ${
+        teacherId && teacherId === teacher._id ? "selected" : ""
+      }>${teacher.name}</option>`;
     });
+    teacherDropdown.innerHTML = optionsHtml;
   }
 
-  fetchSections(document.getElementById("grade").value);
-
-  document.getElementById("grade").addEventListener("change", function () {
-    var selectedGrade = this.value;
-    fetchSections(selectedGrade);
-  });
+  var teacher = teacherDropdown.getAttribute("data-section-teacher");
+  await fetchTeachers(teacher ?? "");
 });

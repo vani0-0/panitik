@@ -1,28 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
-  async function fetchSections(grade) {
+document.addEventListener("DOMContentLoaded", async function () {
+  var gradeSelect = document.getElementById("grade");
+  const sectionDropdown = document.getElementById("section-select");
+
+  async function fetchSections(grade, sectionId) {
     const response = await fetch(`/api/section?grade=${grade}`);
     const data = await response.json();
-    const sectionDropdown = document.getElementById("section-select");
 
     sectionDropdown.innerHTML = "";
 
-    const option = document.createElement('option')
-    option.disabled = true;
-    option.text = "select section";
-    sectionDropdown.appendChild(option)
-
+    let optionsHtml = `<option disabled value="" selected>Select section</option>`;
     data.forEach((section) => {
-      const option = document.createElement("option");
-      option.value = section._id;
-      option.text = section.name;
-      sectionDropdown.appendChild(option);
+      optionsHtml += `<option value="${section._id}"} ${
+        sectionId && sectionId === section._id ? "selected" : ""
+      }>${section.name}</option>`;
     });
+    sectionDropdown.innerHTML = optionsHtml;
   }
 
-  fetchSections(document.getElementById("grade").value);
-
-  document.getElementById("grade").addEventListener("change", function () {
+  gradeSelect.addEventListener("change", function () {
     var selectedGrade = this.value;
     fetchSections(selectedGrade);
   });
+
+  var editMode = sectionDropdown.getAttribute("data-edit-mode") === "true";
+  var section = sectionDropdown.getAttribute("data-student-section");
+  console.log(section);
+  if (editMode) {
+    await fetchSections(gradeSelect.value, section);
+  } else {
+    await fetchSections(gradeSelect.value);
+  }
 });

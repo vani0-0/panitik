@@ -81,7 +81,7 @@ function renderTable() {
       <td> ${student.gender}</td>
       <td> ${student.status} </td>
       <td>
-        <a href="/student/${student._id}" class="edit-button">View</a> |
+        <a href="/student/${student._id}" class="edit-button">Update</a> |
         <a href="#" class="delete-button" id="delete-button" data-student-id="${student._id}">Delete</a>
       </td>
     </tr>

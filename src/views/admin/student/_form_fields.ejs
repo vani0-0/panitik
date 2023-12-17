@@ -1,6 +1,13 @@
 <div class="form-group">
   <label for="name">Name</label>
-  <input id="name" type="text" name="name" required autocomplete="additional-name" value="<%= student.name %>"/>
+  <input
+    id="name"
+    type="text"
+    name="name"
+    required
+    autocomplete="additional-name"
+    value="<%= student.name %>"
+  />
 </div>
 
 <div class="form-group">
@@ -16,27 +23,53 @@
 </div>
 <span id="emailStatus"></span>
 
-  <div class="form-group">
-    <label for="grade">Grade Level</label>
-    <select id="grade" name="grade" required>
+<div class="form-group">
+  <label for="grade">Grade Level</label>
+  <select id="grade" name="grade" required>
+    <% if (editMode) { %> 
+      <option value="7" <%= student.gradeLevel === 7 ? 'selected' : '' %>>Grade 7</option>
+      <option value="8" <%= student.gradeLevel === 8 ? 'selected' : '' %>>Grade 8</option>
+      <option value="9" <%= student.gradeLevel === 9 ? 'selected' : '' %>>Grade 9</option>
+      <option value="10" <%= student.gradeLevel === 10 ? 'selected' : '' %>>Grade 10</option>
+    <% } else { %>
       <option value="7">Grade 7</option>
       <option value="8">Grade 8</option>
       <option value="9">Grade 9</option>
       <option value="10">Grade 10</option>
-    </select>
-  </div>
+    <% } %>
+  </select>
+</div>
 
-  <div class="form-group">
-    <label for="gender">Gender</label>
-    <select id="gender" name="gender" required>
+<div class="form-group">
+  <label for="gender">Gender</label>
+  <select id="gender" name="gender" required>
+    <% if (editMode) { %> 
+      <option value="MALE" <%= student.gender === 'MALE' ? 'selected' : '' %>>MALE</option>
+      <option value="FEMALE" <%= student.gender === 'FEMALE' ? 'selected' : '' %>>FEMALE</option>
+    <% } else { %>
       <option value="MALE">MALE</option>
       <option value="FEMALE">FEMALE</option>
-    </select>
-  </div>
+    <% } %>
+  </select>
+</div>
 
 <div class="form-group">
   <label for="section" id="section">Section</label>
-  <select id="section-select" name="section" required>
+  <select id="section-select" name="section" required data-edit-mode="<%= editMode %>" data-student-section="<%= student.section._id %>"></select>
+</div>
+
+<div class="form-group">
+  <label for="status">Status</label>
+  <select id="status" name="status" required>
+    <% if (editMode) { %> 
+      <option value="ENROLLED" <%= student.status === 'ENROLLED' ? 'selected' : '' %>>Enrolled</option>
+      <option value="NOT ENROLLED" <%= student.status === 'NOT ENROLLED' ? 'selected' : '' %>>Not Enrolled</option>
+      <option value="DROPPED" <%= student.status === 'DROPPED' ? 'selected' : '' %>>Dropped</option>
+    <% } else { %>
+      <option value="ENROLLED">Enrolled</option>
+      <option value="NOT ENROLLED">Not Enrolled</option>
+      <option value="DROPPED">Dropped</option>
+    <% } %>
   </select>
 </div>
 

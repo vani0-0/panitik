@@ -29,7 +29,7 @@ sectionRoute.post(
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
-    const user = await userController.getUser(req.body.advisor);
+    const user = await userController.findById(req.body.teacher);
     await sectionController.createSection({
       name: req.body.name,
       gradeLevel: req.body.gradeLevel,
@@ -46,7 +46,7 @@ sectionRoute.post(
   isAuthenticated,
   allowRole(["ADMIN"]),
   async (req, res) => {
-    const user = await userController.getUser(req.body.advisor);
+    const user = await userController.findById(req.body.teacher);
     await sectionController.editSection(req.params.id, {
       name: req.body.name,
       gradeLevel: req.body.gradeLevel,

@@ -29,10 +29,11 @@ sectionRouter.get(
         errorMessage: "ID does not exist",
       });
     }
+    console.log(section)
     res.render("admin/section/edit_section", {
       account: req.user,
       section,
-      editMode: false,
+      editMode: true,
     });
   }
 );

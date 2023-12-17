@@ -1,4 +1,4 @@
-const sectionController = require("../../controllers/section.controller"); 
+const sectionController = require("../../controllers/section.controller");
 const userController = require("../../controllers/user.controller");
 const allowRole = require("../../middlewares/allowRole");
 const isAuthenticated = require("../../middlewares/isAuthenticated");
@@ -31,8 +31,11 @@ studentRouter.get(
   allowRole(["ADMIN"]),
   async (req, res) => {
     const student = await userController.findById(req.params.id);
-    console.log(student)
-    res.render("admin/student/student_info", { account: req.user, student });
+    res.render("admin/student/student_info", {
+      account: req.user,
+      student,
+      editMode: true,
+    });
   }
 );
 
