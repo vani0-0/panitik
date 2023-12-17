@@ -12,22 +12,29 @@
 
 <div class="form-group">
   <label for="teacher" id="teacher">Assigned Teacher</label>
-  <select id="teacher-select" name="teacher" required></select>
+  <select id="teacher-select" name="teacher" required  data-edit-mode="<%= editMode %>" data-section-teacher="<%= subject.teacher?._id || '' %>"></select>
 </div>
 
 <div class="form-group">
   <label for="grade">Grade Level</label>
   <select id="grade" name="grade" required>
-    <option value="7">Grade 7</option>
-    <option value="8">Grade 8</option>
-    <option value="9">Grade 9</option>
-    <option value="10">Grade 10</option>
+    <% if (editMode) { %> 
+      <option value="7" <%= subject.gradeLevel === 7 ? 'selected' : '' %>>Grade 7</option>
+      <option value="8" <%= subject.gradeLevel === 8 ? 'selected' : '' %>>Grade 8</option>
+      <option value="9" <%= subject.gradeLevel === 9 ? 'selected' : '' %>>Grade 9</option>
+      <option value="10" <%= subject.gradeLevel === 10 ? 'selected' : '' %>>Grade 10</option>
+    <% } else { %>
+      <option value="7">Grade 7</option>
+      <option value="8">Grade 8</option>
+      <option value="9">Grade 9</option>
+      <option value="10">Grade 10</option>
+    <% } %>
   </select>
 </div>
 
 <div class="form-group">
   <label for="section" id="section">Section</label>
-  <select id="section-select" name="section" required></select>
+  <select id="section-select" name="section" required data-edit-mode="<%= editMode %>" data-student-section="<%= subject.section._id %>"></select>
 </div>
 
 

@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   var editMode = sectionDropdown.getAttribute("data-edit-mode") === "true";
   var section = sectionDropdown.getAttribute("data-student-section");
-  console.log(section);
   if (editMode) {
     await fetchSections(gradeSelect.value, section);
   } else {

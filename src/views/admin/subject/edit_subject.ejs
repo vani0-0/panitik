@@ -1,0 +1,26 @@
+<div class="content-body">
+  <div class="center">
+    <div class="card-container">
+      <h1 style="margin-bottom: 2rem">Create Subject</h1>
+      <form
+        class="create-form"
+        id="subjectForm"
+        action="/api/subject/edit/<%= subject._id %>"
+        method="POST"
+      >
+        <%- include('./_form_fields') %>
+        <div class="card-footer">
+          <a href="/subject" class="delete-button">Cancel</a>
+          <button
+            type="submit"
+            class="submit-button"
+            id="submitButton"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

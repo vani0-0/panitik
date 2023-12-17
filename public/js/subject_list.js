@@ -52,7 +52,10 @@ function renderTable() {
       <td> ${subject.name}</td>
       <td> ${subject.teacher?.name ?? 'No Instructor'}</td>
       <td> ${subject.subjectCode}</td>
-      
+      <td>
+        <a href="/subject/${subject._id}" class="edit-button">Edit</a> |
+        <a href="#" class="delete-button" id="delete-button" data-subject-id="${subject._id}">Delete</a>
+      </td>
     </tr>
     `;
     });
@@ -80,8 +83,3 @@ function nextPage() {
   if (curPage * pageSize < data.length) curPage++;
   renderTable();
 }
-{/* <td>
-        <a href="/student?subjectName=${subject.name}" class="edit-button">View Students</a> |
-        <a href="/subject/${subject._id}" class="edit-button">Edit</a> |
-        <a href="#" class="delete-button" id="delete-button" data-subject-id="${subject._id}">Delete</a>
-      </td> */}

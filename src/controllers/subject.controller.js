@@ -12,7 +12,7 @@ const generateRandomString = (length) => {
 
 module.exports = {
   getAllSubjects: async (req, res) => {
-    const subjects = await Subject.find().populate(['teacher', 'section']);
+    const subjects = await Subject.find().populate(["teacher", "section"]);
     return subjects;
   },
   createSubject: async (data) => {
@@ -23,5 +23,22 @@ module.exports = {
       $push: { subjects: subject._id },
     });
     return subject;
+  },
+
+  findById: async (id) => {
+    try {
+      const subject = await Subject.findById(id).populate([
+        "teacher",
+        "section",
+      ]);
+      return subject;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  },
+
+  updateSubject: async (id, data) => {
+    await Subject.findByIdAndUpdate(id, data);
   },
 };
