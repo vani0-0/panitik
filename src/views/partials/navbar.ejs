@@ -6,11 +6,14 @@
   <div>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/user">User</a></li>
-      <li><a href="/student">Student</a></li>
-      <li><a href="/section">Section</a></li>
-      <li><a href="/subject">Subjects</a></li>
-      <!-- <li><a href="/announcements">Announcement</a></li> -->
+      <% if (account.role === 'ADMIN') { %>
+        <li><a href="/user">User</a></li>
+        <li><a href="/student">Student</a></li>
+        <li><a href="/section">Section</a></li>
+        <li><a href="/subject">Subjects</a></li>
+      <% } else if(account.role === 'TEACHER') {%>
+        <li><a href="/announcements">Announcement</a></li>
+      <% } %>
       <li>
         <img src="<%=account.picture%>" class="profile" />
         <ul>

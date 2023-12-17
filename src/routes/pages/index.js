@@ -25,10 +25,11 @@ pageRouter.get("/", isAuthenticated, async (req, res) => {
     return res.render("admin/admin", { account: req.user, announcements });
   }
   if (req.user.role === "TEACHER") {
-    return res.render("home/teacher", { account: req.user });
+    console.log(req.user)
+    return res.render("teacher/teacher", { account: req.user });
   }
   if (req.user.role === "STUDENT") {
-    return res.render("home/student", { account: req.user });
+    return res.render("student/student", { account: req.user });
   }
 });
 

@@ -5,18 +5,20 @@ const Announcement = require("../../models/announcement.model");
 
 const announcementRouter = require("express").Router();
 
-announcementRouter.get(
-  "/",
-  isAuthenticated,
-  allowRole(["ADMIN"]),
-  async (req, res) => {
-    const announcements = await announcementController.getAllAnnouncements();
+announcementRouter.get("/", isAuthenticated, async (req, res) => {
+  const announcements = await announcementController.getAllAnnouncements();
+  if (req.user.role === "ADMIN")
     res.render("admin/announcement/announcements", {
       account: req.user,
       announcements,
     });
+  else {
+    res.render("announcement/announcements", {
+      account: req.user,
+      announcements,
+    });
   }
-);
+});
 
 announcementRouter.get(
   "/create",

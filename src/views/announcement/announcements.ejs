@@ -1,0 +1,7 @@
+<div class="content-body">
+  <% announcements.forEach(announcement => { %> 
+    <%- include('../partials/announcementCard', { announcement , account}) %> 
+  <%}); %>
+</div>
+
+<script src="/js/delete_announcement.js"></script>
