@@ -4,7 +4,7 @@ module.exports = {
   getAllSections: async () => {
     const sections = await Section.find().populate("advisor");
     const segs = sections.map((section) => {
-      return { ...section._doc, advisorName: section.advisor.name };
+      return { ...section._doc, advisorName: section.advisor?.name ?? 'No Advisor' };
     });
     return segs;
   },
@@ -17,7 +17,7 @@ module.exports = {
   findById: async (id) => {
     try {
       const section = await Section.findById(id).populate("advisor");
-      return { ...section._doc, advisorEmail: section.advisor.email };
+      return { ...section._doc, advisorEmail: section.advisor?.email ?? 'No Advisor' };
     } catch (error) {
       console.log(error);
       return null;

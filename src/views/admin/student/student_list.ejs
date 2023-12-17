@@ -1,7 +1,17 @@
 <div class="content-body">
   <h2>STUDENTS LIST</h2>
-  <div style="margin-bottom: 10px;">
+  <div style="margin-bottom: 10px; display: flex; gap: 5px;">
     <a href="/student/new" class="submit-button">Enroll</a>
+    <div class="form-group">
+      <label for="search-student">Search</label>
+      <input type="search" style="border: 1px solid black;" name="search-student" id="search-student"/>
+      <select name="filterBy" id="filterBy">
+        <option value="studentNo">Student no.</option>
+        <option value="name">Name</option>
+        <option value="email">Email</option>
+      </select>
+      <button id="filterButton">Filter</button>
+    </div>
   </div>
   <table id="studentTable">
     <thead>

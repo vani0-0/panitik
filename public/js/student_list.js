@@ -1,11 +1,31 @@
 document.addEventListener("DOMContentLoaded", init, false);
 console.log("list");
 
-let data, table, sortCol;
+let originalData, data, table, sortCol;
 let sortAsc = false;
 
 const pageSize = 10;
 let curPage = 1;
+
+document.getElementById("filterButton").addEventListener("click", () => {
+  applyFilter();
+});
+
+async function applyFilter() {
+  const filterValue = document.getElementById("filterBy").value;
+  const searchTerm = document
+    .getElementById("search-student")
+    .value.toLowerCase();
+
+  let filteredData = originalData.filter((student) => {
+    const fieldValue = student[filterValue].toLowerCase();
+    return fieldValue.includes(searchTerm);
+  });
+
+  curPage = 1;
+  data = filteredData;
+  renderTable();
+}
 
 async function init() {
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -16,7 +36,8 @@ async function init() {
   table = document.querySelector("#studentTable tbody");
   const response = await fetch(`/api/student/all?section=${section}`);
 
-  data = await response.json();
+  originalData = await response.json();
+  data = [...originalData]; // Create a copy of the original data
   renderTable();
 
   document.querySelectorAll("#userTable thead tr th").forEach((t) => {

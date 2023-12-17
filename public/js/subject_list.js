@@ -50,7 +50,7 @@ function renderTable() {
       <td> ${subject.gradeLevel}</td>
       <td> ${subject.section.name}</td>
       <td> ${subject.name}</td>
-      <td> ${subject.teacher.name}</td>
+      <td> ${subject.teacher?.name ?? 'No Instructor'}</td>
       <td> ${subject.subjectCode}</td>
       
     </tr>
