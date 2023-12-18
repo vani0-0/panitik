@@ -15,10 +15,14 @@ const studentSchema = new Schema({
   section: { type: SchemaTypes.ObjectId, req: "section" },
   gradeLevel: { type: SchemaTypes.Number },
   gender: { type: SchemaTypes.String, enum: ["MALE", "FEMALE"] },
-  status: { type: SchemaTypes.String, enum: ["ENROLLED", "NOT ENROLLED", "DROPPED"] },
+  status: {
+    type: SchemaTypes.String,
+    enum: ["ENROLLED", "NOT ENROLLED", "DROPPED"],
+    default: "NOT ENROLLED",
+  },
 });
 
 const User = model("user", userSchema);
 const Student = User.discriminator("student", studentSchema);
 
-module.exports = { User, Student, };
+module.exports = { User, Student };
