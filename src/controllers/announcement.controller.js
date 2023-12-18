@@ -35,13 +35,13 @@ module.exports = {
 };
 
 function formatCreatedAt(createdAt) {
-  const options = {
+  const formattedDate = new Date(createdAt).toLocaleString("en-US", {
     month: "long",
     day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timeZoneName: "short",
-  };
-  const formattedDate = new Date(createdAt).toLocaleString("en-US", options);
+    year: "numeric",
+    hour12: true,
+    hour: 'numeric',
+    minute: 'numeric'
+  });
   return `Posted on ${formattedDate}`;
 }
