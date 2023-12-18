@@ -22,7 +22,7 @@
 
 <div class="form-group">
   <label for="teacher" id="teacher">Assigned Teacher</label>
-  <select id="teacher-select" name="teacher" required  data-edit-mode="<%= editMode %>" data-section-teacher="<%= section.advisor._id %>"></select>
+  <select id="teacher-select" name="teacher" required  data-edit-mode="<%= editMode %>" data-section-teacher="<%= section.advisor?._id || '' %>"></select>
 </div>
  
 

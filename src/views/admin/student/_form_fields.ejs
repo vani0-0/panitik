@@ -55,7 +55,7 @@
 
 <div class="form-group">
   <label for="section" id="section">Section</label>
-  <select id="section-select" name="section" required data-edit-mode="<%= editMode %>" data-student-section="<%= student.section._id %>"></select>
+  <select id="section-select" name="section" required data-edit-mode="<%= editMode %>" data-student-section="<%= student.section?._id || '' %>"></select>
 </div>
 
 <div class="form-group">
